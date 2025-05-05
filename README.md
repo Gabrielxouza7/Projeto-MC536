@@ -1,7 +1,7 @@
 # Projeto-MC536
 ## Objetivo
 
-O projeto tem como objetivo o cruzamento de dois datasets voltados a temas ambientais, que nos permitem analisar relações sobre a presença de unidades de conservação ambiental e a quantidade de resíduos coletados em mutirões de limpeza em corpos hídricos nas cidades brasileiras
+O projeto tem como objetivo o cruzamento de dois datasets voltados a temas ambientais, que nos permitem analisar relações sobre a presença de unidades de conservação ambiental e a quantidade de resíduos coletados em mutirões de limpeza em corpos hídricos nas cidades brasileiras.
 
 ---
 
@@ -35,23 +35,23 @@ O banco é composto pelas tabelas:
 
 ## Como Rodar
 
-1. Clone este repositório
-2. Certifique-se de instalar o `pandas` e o `psycopg2` e importar as bibliotecas para o funcionamento do projeto:
+1. Clone este repositório.
+2. Certifique-se de instalar o `pandas` e o `psycopg2` para o funcionamento do projeto, pois os seguintes imports são necessários:
 ```python
 import pandas as pd
 import psycopg2
 from psycopg2 import sql
 from io import StringIO
 ```
-3. Abra o script codigo_completo
-4. Na parte de conectar com o banco, passe os parâmetros de connect conforme o seu banco
+3. Abra o script codigo_completo (ele já conterá os imports acima).
+4. Na parte de conectar com o banco, passe os parâmetros de connect conforme o seu banco.
 ```python
 from psycopg2 import sql
 conn = psycopg2.connect(dbname = "", user = "postgres", password = "", host = "localhost", port = "5432")
 cursor = conn.cursor()
 ```
-5. Execute o script
-6. Use as queries SQL disponíveis para análise ou fique a vontade para criar outras
+5. Execute o script.
+6. Use as queries SQL disponíveis para análise ou fique a vontade para criar outras.
 
 ---
 

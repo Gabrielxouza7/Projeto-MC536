@@ -18,10 +18,10 @@ Este repositório contém o trabalho da disciplina MC536: Bancos de Dados. O pro
 O ponto central deste projeto é um banco de dados relacional estruturado para integrar diversos conjuntos de dados de forma coesa. A seguir, são apresentadas as visualizações dos modelos conceitual e relacional:
 
 **Figura 1:** Modelo Conceitual (Diagrama ER)  
-![Modelo Conceitual do Banco de Dados](modelos/modelo_conceitual.png)  
+![Modelo Conceitual do Banco de Dados](modelos/modelo_conceitual.jpeg)  
 
 **Figura 2:** Modelo Relacional (Lógico)  
-![Modelo Relacional do Banco de Dados](modelos/modelo_relacional_imagem.jpeg)  
+![Modelo Relacional do Banco de Dados](modelos/modelo_relacional_imagem.png)  
 
 (O script SQL do Modelo Físico pode ser encontrado [aqui](modelos/modelo_fisico.sql)).
 

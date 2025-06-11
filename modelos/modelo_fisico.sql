@@ -6,16 +6,16 @@ BEGIN;
 CREATE TABLE IF NOT EXISTS public.bioma
 (
     id_bioma integer NOT NULL,
-    bioma_declarado text COLLATE pg_catalog."default" NOT NULL,
+    nome text COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT bioma_pkey PRIMARY KEY (id_bioma)
 );
 
 CREATE TABLE IF NOT EXISTS public.categoria_manejo
 (
     id_manejo integer NOT NULL,
-    categoria_de_manejo text COLLATE pg_catalog."default" NOT NULL,
+    categoria text COLLATE pg_catalog."default" NOT NULL,
     categoria_iucn text COLLATE pg_catalog."default" NOT NULL,
-    plano_de_manejo text COLLATE pg_catalog."default" NOT NULL,
+    plano text COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT categoria_manejo_pkey PRIMARY KEY (id_manejo)
 );
 
@@ -37,37 +37,29 @@ CREATE TABLE IF NOT EXISTS public.coleta_de_lixo
 CREATE TABLE IF NOT EXISTS public.esfera_administrativa
 (
     id_esfera integer NOT NULL,
-    esfera_administrativa text COLLATE pg_catalog."default" NOT NULL,
+    tipo text COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT esfera_administrativa_pkey PRIMARY KEY (id_esfera)
 );
 
 CREATE TABLE IF NOT EXISTS public.instituicao_organizadora
 (
     id_instituicao_organizadora integer NOT NULL,
-    instituicao_organizadora text COLLATE pg_catalog."default" NOT NULL,
-    carater_da_instituicao text COLLATE pg_catalog."default" NOT NULL,
+    nome text COLLATE pg_catalog."default" NOT NULL,
+    carater text COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT instituicao_organizadora_pkey PRIMARY KEY (id_instituicao_organizadora)
 );
 
 CREATE TABLE IF NOT EXISTS public.local_de_coleta
 (
     id_mutirao integer NOT NULL,
-    nome_do_local text COLLATE pg_catalog."default" NOT NULL,
+    nome text COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT local_de_coleta_pkey PRIMARY KEY (id_mutirao)
-);
-
-CREATE TABLE IF NOT EXISTS public.municipio
-(
-    id_municipio integer NOT NULL,
-    cidade text COLLATE pg_catalog."default" NOT NULL,
-    estado text COLLATE pg_catalog."default" NOT NULL,
-    CONSTRAINT municipio_pkey PRIMARY KEY (id_municipio)
 );
 
 CREATE TABLE IF NOT EXISTS public.mutirao_de_limpeza
 (
     id_mutirao integer NOT NULL,
-    data_do_mutirao date NOT NULL,
+    data_do_ocorrido date NOT NULL,
     horario_de_inicio time without time zone NOT NULL,
     numero_aproximado_de_participantes integer,
     duracao_total time without time zone NOT NULL,
@@ -76,28 +68,18 @@ CREATE TABLE IF NOT EXISTS public.mutirao_de_limpeza
     CONSTRAINT mutirao_de_limpeza_pkey PRIMARY KEY (id_mutirao)
 );
 
-CREATE TABLE IF NOT EXISTS public.tipo_de_lixo
+CREATE TABLE IF NOT EXISTS public.regiao
 (
-    id_mutirao integer NOT NULL,
-    fragmentos_de_plastico integer,
-    canudos integer,
-    embalagens_de_alimento integer,
-    garrafas_pet integer,
-    sacolas integer,
-    pneus integer,
-    preservativos integer,
-    embalagens_de_cigarro integer,
-    jornais_panfletos_revistas_livros integer,
-    latas integer,
-    entulhos integer,
-    animais_mortos integer,
-    CONSTRAINT tipo_de_lixo_pkey PRIMARY KEY (id_mutirao)
+    id_municipio integer NOT NULL,
+    nome text COLLATE pg_catalog."default" NOT NULL,
+    estado text COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT regiao_pkey PRIMARY KEY (id_municipio)
 );
 
 CREATE TABLE IF NOT EXISTS public.unidade_de_conservacao
 (
     id_uc integer NOT NULL,
-    nome_da_uc text COLLATE pg_catalog."default" NOT NULL,
+    nome text COLLATE pg_catalog."default" NOT NULL,
     ano_de_criacao integer,
     area_soma_biomas double precision,
     area_soma_biomas_continentais double precision,
@@ -136,18 +118,9 @@ ALTER TABLE IF EXISTS public.mutirao_de_limpeza
 
 ALTER TABLE IF EXISTS public.mutirao_de_limpeza
     ADD CONSTRAINT mutirao_de_limpeza_id_municipio_fkey FOREIGN KEY (id_municipio)
-    REFERENCES public.municipio (id_municipio) MATCH SIMPLE
+    REFERENCES public.regiao (id_municipio) MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION;
-
-
-ALTER TABLE IF EXISTS public.tipo_de_lixo
-    ADD CONSTRAINT tipo_de_lixo_id_mutirao_fkey FOREIGN KEY (id_mutirao)
-    REFERENCES public.coleta_de_lixo (id_mutirao) MATCH SIMPLE
-    ON UPDATE NO ACTION
-    ON DELETE NO ACTION;
-CREATE INDEX IF NOT EXISTS tipo_de_lixo_pkey
-    ON public.tipo_de_lixo(id_mutirao);
 
 
 ALTER TABLE IF EXISTS public.unidade_de_conservacao
@@ -173,7 +146,7 @@ ALTER TABLE IF EXISTS public.unidade_de_conservacao
 
 ALTER TABLE IF EXISTS public.unidade_de_conservacao
     ADD CONSTRAINT unidade_de_conservacao_id_municipio_fkey FOREIGN KEY (id_municipio)
-    REFERENCES public.municipio (id_municipio) MATCH SIMPLE
+    REFERENCES public.regiao (id_municipio) MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION;
 

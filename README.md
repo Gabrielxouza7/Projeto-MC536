@@ -39,8 +39,7 @@ Os dados brutos foram obtidos do Portal de Dados Abertos do Governo, em específ
 - `categoria_manejo`: Tipos de manejo aplicáveis.
 - `esfera_administrativa`: Níveis de gestão (Federal, Estadual, Municipal).
 - `instituicao_organizadora`: Órgãos e entidades responsáveis (IBAMA, ICMBio, ONGs).
-- `municipio`: Dados cadastrais de municípios.
-- `tipo_de_lixo`: Classificação de resíduos.
+- `regiao`: Dados cadastrais de municípios.
 - `mutirao_de_limpeza`: Registro de ações coletivas.
 - `coleta_de_lixo`: Dados operacionais.
 - `local_de_coleta`: Métricas por ponto de coleta.

@@ -65,10 +65,10 @@ Projeto-MC536/
 │   ├── dados_abertos_rios___limpos(1).csv
 │
 ├── modelos/                    # Modelos do banco
-│   ├── modelo_conceitual.png
+│   ├── modelo_conceitual.jpeg
 │   ├── modelo_fisico.sql
 │   ├── modelo_relacional.pgerd
-│   └── modelo_relacional_imagem.jpeg
+│   └── modelo_relacional_imagem.png
 │
 ├── resultados/                  # Resultados das consultas
 │   ├── query_1.csv
@@ -78,7 +78,7 @@ Projeto-MC536/
 │   └── query_5.csv
 │
 ├── tratamento_e_analise_de_dados/                
-│   ├── criacao_codigo_completo.ipynb
+│   ├── codigo_completo.ipynb
 │   ├── criacao_populacao_e_queries.ipynb
 │   ├── manipulacao_e_tratamento_dados.ipynb
 │            
